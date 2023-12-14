@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 export default function App() {
   const [product, setProduct] = useState("");
@@ -10,29 +17,33 @@ export default function App() {
   };
 
   const handleSubmit = () => {
-    console.log("Ajout");
-    // récupérer prduits existant dans listProducts
-    // Puis les injecters dans le nouvelle array
-    setListProducts((currentListProducts) => [...currentListProducts, product]);
-    setProduct("");
+    if (product.trim()) {
+      const idString = Date.now().toString();
+      setListProducts((currentListProducts) => [
+        { key: idString, name: product },
+        ...currentListProducts,
+      ]);
+      setProduct("");
+    }
   };
 
   return (
     <View style={styles.container}>
-      <View style={{ flexDirection: "row" }}>
+      <View style={styles.inputContainer}>
         <TextInput
           style={styles.textInput}
           placeholder="Nouveau produit"
-          onChangeText={() => handleProduct()}
+          onChangeText={handleProduct}
           value={product}
         />
-        <Button title="Valider" onPress={() => handleSubmit} />
+        <Button title="Valider" onPress={handleSubmit} />
       </View>
-      {/* <Text>
-        {listProducts.map((prod) => (
-          <Text>{prod}</Text>
-        ))}
-      </Text> */}
+      <FlatList
+        data={listProducts}
+        renderItem={({ item }) => (
+          <Text style={styles.element}>{item ? item.name : item}</Text>
+        )}
+      />
     </View>
   );
 }
@@ -42,6 +53,10 @@ const styles = StyleSheet.create({
     padding: 40,
     paddingTop: 60,
   },
+  inputContainer: {
+    marginBottom: 20,
+    flexDirection: "row",
+  },
   textInput: {
     borderColor: "grey",
     borderWidth: 1,
@@ -50,5 +65,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     // Prend tout l'espace disponible
     flexGrow: 1,
+  },
+  // items: {
+  //   marginTop: 10,
+  // },
+  element: {
+    backgroundColor: "grey",
+    color: "white",
+    padding: 10,
+    marginTop: 15,
+    fontSize: 18,
   },
 });
