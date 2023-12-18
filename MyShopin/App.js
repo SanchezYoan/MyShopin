@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
 } from "react-native";
+import Products from "./components/Products";
 
 export default function App() {
   const [product, setProduct] = useState("");
@@ -41,7 +42,8 @@ export default function App() {
       <FlatList
         data={listProducts}
         renderItem={({ item }) => (
-          <Text style={styles.element}>{item ? item.name : item}</Text>
+          // <Text style={styles.element}>{item ? item.name : item}</Text>
+          <Products name={item.name} />
         )}
       />
     </View>
