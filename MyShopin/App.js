@@ -14,12 +14,28 @@ export default function App() {
         ...currentListProducts,
       ]);
     } else {
-      Alert.alert("Désolé", "Le nombre de carcatère doit être supérieur à un", [
+      Alert.alert(
+        "Désolé",
+        "Le nombre de carcatère doit être supérieur à un",
+        [
+          {
+            text: "Compris !",
+            onPress: () => console.warn("refusé"),
+          },
+          {
+            text: "D'accord",
+            onPress: () => console.warn("Okay"),
+          },
+          {
+            text: "Yes",
+            onPress: () => console.warn("Yes"),
+          },
+        ],
         {
-          text: "Compris !",
-          onPress: () => console.warn("refusé"),
-        },
-      ]);
+          cancelable: true,
+          onDismiss: () => console.warn("dismissed"),
+        }
+      );
     }
   };
 
