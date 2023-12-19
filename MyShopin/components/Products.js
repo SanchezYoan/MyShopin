@@ -1,17 +1,28 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 
 const Products = ({ name }) => {
+  // const handleDelete = () => {};
   return (
-    <View style={styles.items}>
-      <Text style={styles.element}>{name}</Text>
-    </View>
+    <Pressable
+      onLongPress={() => console.log("CLICK")}
+      style={({ pressed }) => [
+        {
+          backgroundColor: pressed ? "blue" : "red",
+        },
+      ]}
+      delayLongPress={2500}
+    >
+      <View>
+        <Text style={styles.element}>{name}</Text>
+      </View>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   items: {
-    marginTop: 10,
+    // marginTop: 10,
   },
   element: {
     backgroundColor: "grey",
