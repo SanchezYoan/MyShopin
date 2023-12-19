@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { StyleSheet, TextInput, View, Button } from "react-native";
 
 const AddProduct = ({ handleSubmit }) => {
-  const [product, setProduct] = useState("");
+  const [product, setProducts] = useState("");
 
   const handleProduct = (prod) => {
-    setProduct(prod);
+    setProducts(prod);
   };
 
   const handlePress = () => {
     handleSubmit(product);
-    setProduct("");
+    setProducts("");
   };
 
   return (
@@ -19,7 +19,7 @@ const AddProduct = ({ handleSubmit }) => {
         <TextInput
           style={styles.textInput}
           placeholder="Nouveau produit"
-          onChangeText={handleProduct}
+          onChangeText={(e) => handleProduct(e)}
           value={product}
         />
         <Button title="Valider" onPress={handlePress} />

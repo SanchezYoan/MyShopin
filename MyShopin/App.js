@@ -19,10 +19,7 @@ export default function App() {
 
       <FlatList
         data={listProducts}
-        renderItem={({ item }) => (
-          // <Text style={styles.element}>{item ? item.name : item}</Text>
-          <Products name={item.name} />
-        )}
+        renderItem={({ item }) => <Products name={item.name} />}
       />
     </View>
   );
