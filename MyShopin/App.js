@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { Alert, FlatList, StyleSheet, View } from "react-native";
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
 
@@ -7,11 +7,20 @@ export default function App() {
   const [listProducts, setListProducts] = useState([]);
 
   const handleSubmit = (product) => {
-    const idString = Date.now().toString();
-    setListProducts((currentListProducts) => [
-      { key: idString, name: product },
-      ...currentListProducts,
-    ]);
+    if (product.length > 1) {
+      const idString = Date.now().toString();
+      setListProducts((currentListProducts) => [
+        { key: idString, name: product },
+        ...currentListProducts,
+      ]);
+    } else {
+      Alert.alert("Désolé", "Le nombre de carcatère doit être supérieur à un", [
+        {
+          text: "Compris !",
+          onPress: () => console.warn("refusé"),
+        },
+      ]);
+    }
   };
 
   const deleteProduct = (key) => {
