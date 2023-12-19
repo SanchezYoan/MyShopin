@@ -13,13 +13,25 @@ export default function App() {
       ...currentListProducts,
     ]);
   };
+
+  const deleteProduct = (key) => {
+    setListProducts((currentMyProducts) => {
+      return currentMyProducts.filter((product) => product.key != key);
+    });
+  };
   return (
     <View style={styles.container}>
       <AddProduct handleSubmit={handleSubmit} />
 
       <FlatList
         data={listProducts}
-        renderItem={({ item }) => <Products name={item.name} />}
+        renderItem={({ item }) => (
+          <Products
+            name={item.name}
+            deleteProduct={deleteProduct}
+            idString={item.key}
+          />
+        )}
       />
     </View>
   );

@@ -1,17 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 
-const Products = ({ name }) => {
+const Products = ({ name, deleteProduct, idString }) => {
   // const handleDelete = () => {};
   return (
     <Pressable
-      onLongPress={() => console.log("CLICK")}
+      onLongPress={() => deleteProduct(idString)}
       style={({ pressed }) => [
         {
           backgroundColor: pressed ? "blue" : "red",
         },
       ]}
-      delayLongPress={2500}
     >
       <View>
         <Text style={styles.element}>{name}</Text>
