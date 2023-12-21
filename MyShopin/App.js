@@ -19,16 +19,8 @@ export default function App() {
         "Le nombre de carcatère doit être supérieur à un",
         [
           {
-            text: "Compris !",
-            onPress: () => console.warn("refusé"),
-          },
-          {
-            text: "D'accord",
-            onPress: () => console.warn("Okay"),
-          },
-          {
-            text: "Yes",
-            onPress: () => console.warn("Yes"),
+            text: "Compris",
+            // onPress: () => ,
           },
         ],
         {
