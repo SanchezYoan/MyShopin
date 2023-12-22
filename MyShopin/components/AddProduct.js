@@ -3,7 +3,9 @@ import { StyleSheet, TextInput, View, Button } from "react-native";
 
 const AddProduct = ({ handleSubmit }) => {
   const [product, setProducts] = useState("");
+  // entré pour ajouter un produit
   const [btnDisable, setBtnDisable] = useState(true);
+  // gestion d'etat du button valider
 
   useEffect(() => {
     if (product.length > 1) {
@@ -11,6 +13,7 @@ const AddProduct = ({ handleSubmit }) => {
     } else {
       setBtnDisable(true);
     }
+    // l'événènement se déclenche quand product est modifié
   }, [product]);
   const handleProduct = (prod) => {
     setProducts(prod);
