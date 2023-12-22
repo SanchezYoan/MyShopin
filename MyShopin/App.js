@@ -34,7 +34,12 @@ export default function App() {
   };
   return (
     <View style={styles.container}>
-      <Modal visible={showModal} onRequestClose={() => setShowModal(false)}>
+      <Modal
+        visible={showModal}
+        onRequestClose={() => setShowModal(false)}
+        hardwareAccelerated
+        transparent
+      >
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
@@ -97,7 +102,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0, 0.2)",
   },
   modalContent: {
-    backgroundColor: "red",
+    backgroundColor: "white",
     width: "90%",
     height: 250,
     borderRadius: 15,
@@ -105,7 +110,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalHeader: {
-    backgroundColor: "black",
     width: "100%",
     padding: 16,
     alignItems: "center",
@@ -115,8 +119,8 @@ const styles = StyleSheet.create({
     borderBottomColor: "lightgray",
   },
   modalHeaderText: {
-    color: "white",
-    fontSize: 16,
+    color: "grey",
+    fontSize: 17,
   },
   modalBody: {
     flex: 1,
@@ -128,7 +132,7 @@ const styles = StyleSheet.create({
   },
   modalBodyText: {
     fontSize: 17,
-    color: "white",
+    color: "black",
   },
   modalFooter: {
     width: "100%",
@@ -136,7 +140,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 15,
   },
   btnPressableModal: {
-    backgroundColor: "black",
+    backgroundColor: "#bdbd7e",
     justifyContent: "center",
     alignItems: "center",
     borderBottomLeftRadius: 15,
