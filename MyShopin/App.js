@@ -7,6 +7,7 @@ import {
   View,
   Pressable,
   Button,
+  Image,
 } from "react-native";
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
@@ -32,6 +33,10 @@ export default function App() {
     }
   };
 
+  const cancelNewProduct = () => {
+    setDisplayModal(false);
+  };
+
   const deleteProduct = (key) => {
     setListProducts((currentMyProducts) => {
       return currentMyProducts.filter((product) => product.key != key);
@@ -53,6 +58,13 @@ export default function App() {
                 <Text style={styles.modalHeaderText}>Oups !</Text>
               </View>
               <View style={styles.modalBody}>
+                {/* <Image source={require("./assets/cross_cancel.png")} /> */}
+                <Image
+                  source={{
+                    uri: "https://cdn.pixabay.com/photo/2013/07/12/13/50/road-sign-147409_960_720.png",
+                  }}
+                  style={{ width: 40, height: 40 }}
+                />
                 <Text style={styles.modalBodyText}>
                   Merci d'indiquer plus d'un caractère
                 </Text>
@@ -69,7 +81,11 @@ export default function App() {
           </View>
         </Modal>
         <Button title="Nouveau produit" onPress={() => setDisplayModal(true)} />
-        <AddProduct handleSubmit={handleSubmit} displayModal={displayModal} />
+        <AddProduct
+          handleSubmit={handleSubmit}
+          displayModal={displayModal}
+          cancelNewProduct={cancelNewProduct}
+        />
 
         <FlatList
           data={listProducts}
@@ -93,7 +109,6 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 20,
-    flexDirection: "row",
   },
   textInput: {
     borderColor: "grey",
@@ -113,13 +128,12 @@ const styles = StyleSheet.create({
   modalContent: {
     backgroundColor: "white",
     width: "90%",
-    height: 250,
+    height: 300,
     borderRadius: 15,
     padding: 9,
     alignItems: "center",
   },
   modalHeader: {
-    width: "100%",
     padding: 16,
     alignItems: "center",
     borderTopRightRadius: 15,
@@ -132,10 +146,10 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   modalBody: {
-    flex: 1,
-    width: "100%",
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
+    flex: 1,
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
   },

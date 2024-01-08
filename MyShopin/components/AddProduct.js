@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, TextInput, View, Button, Modal } from "react-native";
 
-const AddProduct = ({ handleSubmit, displayModal }) => {
+const AddProduct = ({ handleSubmit, displayModal, cancelNewProduct }) => {
   const [product, setProducts] = useState("");
   // entré pour ajouter un produit
   const [btnDisable, setBtnDisable] = useState(true);
@@ -31,7 +31,7 @@ const AddProduct = ({ handleSubmit, displayModal }) => {
           // multiline
           // Permet d'écrire sur plusieurs lignes
           // numberOfLines={4}
-          // style={styles.textInput}
+          style={styles.textInput}
           placeholder="Nouveau produit"
           maxLength={12}
           onChangeText={(e) => handleProduct(e)}
@@ -42,7 +42,18 @@ const AddProduct = ({ handleSubmit, displayModal }) => {
           // désactive le textInput
           // editable={false}
         />
-        <Button title="Valider" onPress={handlePress} disabled={btnDisable} />
+        <View style={styles.btnContainer}>
+          <View style={styles.btnBlue}>
+            <Button
+              title="Valider"
+              onPress={handlePress}
+              disabled={btnDisable}
+            />
+          </View>
+          <View style={styles.btnTomato}>
+            <Button title="Annuler" onPress={cancelNewProduct} color="red" />
+          </View>
+        </View>
       </View>
     </Modal>
   );
@@ -62,8 +73,13 @@ const styles = StyleSheet.create({
     paddingLeft: 9,
     fontSize: 18,
     // Prend tout l'espace disponible
-    flexGrow: 1,
   },
+  btnContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  btnBlue: { width: "45%" },
+  btnTomato: { width: "45%" },
 });
 
 export default AddProduct;
