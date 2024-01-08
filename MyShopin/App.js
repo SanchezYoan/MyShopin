@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
+import DissmissKeyboard from "./components/DissmissKeyboard";
 
 export default function App() {
   const [listProducts, setListProducts] = useState([]);
@@ -33,47 +34,50 @@ export default function App() {
     });
   };
   return (
-    <View style={styles.container}>
-      <Modal
-        visible={showModal}
-        onRequestClose={() => setShowModal(false)}
-        hardwareAccelerated
-        transparent
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <View style={styles.modalHeader}>
-              <Text style={styles.modalHeaderText}>Oups !</Text>
-            </View>
-            <View style={styles.modalBody}>
-              <Text style={styles.modalBodyText}>
-                Merci d'indiquer plus d'un caractère
-              </Text>
-            </View>
-            <View style={styles.modalFooter}>
-              <Pressable
-                style={styles.btnPressableModal}
-                onPress={() => setShowModal(false)}
-              >
-                <Text style={styles.modalFooterText}>OK</Text>
-              </Pressable>
+    // Permet d'enlever le clavier virtuel
+    <DissmissKeyboard>
+      <View style={styles.container}>
+        <Modal
+          visible={showModal}
+          onRequestClose={() => setShowModal(false)}
+          hardwareAccelerated
+          transparent
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <View style={styles.modalHeader}>
+                <Text style={styles.modalHeaderText}>Oups !</Text>
+              </View>
+              <View style={styles.modalBody}>
+                <Text style={styles.modalBodyText}>
+                  Merci d'indiquer plus d'un caractère
+                </Text>
+              </View>
+              <View style={styles.modalFooter}>
+                <Pressable
+                  style={styles.btnPressableModal}
+                  onPress={() => setShowModal(false)}
+                >
+                  <Text style={styles.modalFooterText}>OK</Text>
+                </Pressable>
+              </View>
             </View>
           </View>
-        </View>
-      </Modal>
-      <AddProduct handleSubmit={handleSubmit} />
+        </Modal>
+        <AddProduct handleSubmit={handleSubmit} />
 
-      <FlatList
-        data={listProducts}
-        renderItem={({ item }) => (
-          <Products
-            name={item.name}
-            deleteProduct={deleteProduct}
-            idString={item.key}
-          />
-        )}
-      />
-    </View>
+        <FlatList
+          data={listProducts}
+          renderItem={({ item }) => (
+            <Products
+              name={item.name}
+              deleteProduct={deleteProduct}
+              idString={item.key}
+            />
+          )}
+        />
+      </View>
+    </DissmissKeyboard>
   );
 }
 

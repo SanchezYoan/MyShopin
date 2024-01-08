@@ -28,10 +28,19 @@ const AddProduct = ({ handleSubmit }) => {
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
-          style={styles.textInput}
+          multiline
+          // Permet d'écrire sur plusieurs lignes
+          // numberOfLines={4}
+          // style={styles.textInput}
           placeholder="Nouveau produit"
+          maxLength={12}
           onChangeText={(e) => handleProduct(e)}
           value={product}
+          // Masque l'entrée en "*"
+          // secureTextEntry
+          // -----------------//
+          // désactive le textInput
+          // editable={false}
         />
         <Button title="Valider" onPress={handlePress} disabled={btnDisable} />
       </View>
@@ -46,11 +55,11 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 20,
-    flexDirection: "row",
   },
   textInput: {
     borderColor: "grey",
     borderWidth: 1,
+    marginBottom: 9,
     padding: 5,
     paddingLeft: 9,
     fontSize: 18,
