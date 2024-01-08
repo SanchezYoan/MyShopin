@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View,
   Pressable,
+  Button,
 } from "react-native";
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
@@ -16,7 +17,10 @@ export default function App() {
 
   const [showModal, setShowModal] = useState(true);
 
+  const [displayModal, setDisplayModal] = useState(false);
+
   const handleSubmit = (product) => {
+    setDisplayModal(false);
     if (product.length > 3) {
       const idString = Date.now().toString();
       setListProducts((currentListProducts) => [
@@ -64,7 +68,8 @@ export default function App() {
             </View>
           </View>
         </Modal>
-        <AddProduct handleSubmit={handleSubmit} />
+        <Button title="Nouveau produit" onPress={() => setDisplayModal(true)} />
+        <AddProduct handleSubmit={handleSubmit} displayModal={displayModal} />
 
         <FlatList
           data={listProducts}

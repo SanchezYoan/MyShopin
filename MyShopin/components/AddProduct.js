@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, TextInput, View, Button } from "react-native";
+import { StyleSheet, TextInput, View, Button, Modal } from "react-native";
 
-const AddProduct = ({ handleSubmit }) => {
+const AddProduct = ({ handleSubmit, displayModal }) => {
   const [product, setProducts] = useState("");
   // entré pour ajouter un produit
   const [btnDisable, setBtnDisable] = useState(true);
@@ -25,10 +25,10 @@ const AddProduct = ({ handleSubmit }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <Modal visible={displayModal} animationType="slide">
       <View style={styles.inputContainer}>
         <TextInput
-          multiline
+          // multiline
           // Permet d'écrire sur plusieurs lignes
           // numberOfLines={4}
           // style={styles.textInput}
@@ -44,17 +44,15 @@ const AddProduct = ({ handleSubmit }) => {
         />
         <Button title="Valider" onPress={handlePress} disabled={btnDisable} />
       </View>
-    </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 40,
-    paddingTop: 60,
-  },
   inputContainer: {
-    marginBottom: 20,
+    flex: 1,
+    justifyContent: "center",
+    padding: 24,
   },
   textInput: {
     borderColor: "grey",
