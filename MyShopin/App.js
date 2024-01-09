@@ -8,6 +8,7 @@ import {
   Pressable,
   Button,
   Image,
+  ImageBackground,
 } from "react-native";
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
@@ -45,7 +46,12 @@ export default function App() {
   return (
     // Permet d'enlever le clavier virtuel
     <DissmissKeyboard>
-      <View style={styles.container}>
+      <ImageBackground
+        source={{
+          uri: "https://cdn.pixabay.com/photo/2015/04/20/22/17/magnolia-732331_960_720.png",
+        }}
+        style={styles.container}
+      >
         <Modal
           visible={showModal}
           onRequestClose={() => setShowModal(false)}
@@ -63,7 +69,7 @@ export default function App() {
                   source={{
                     uri: "https://cdn.pixabay.com/photo/2013/07/12/13/50/road-sign-147409_960_720.png",
                   }}
-                  style={{ width: 40, height: 40 }}
+                  style={{ width: 50, height: 50 }}
                 />
                 <Text style={styles.modalBodyText}>
                   Merci d'indiquer plus d'un caractère
@@ -97,7 +103,7 @@ export default function App() {
             />
           )}
         />
-      </View>
+      </ImageBackground>
     </DissmissKeyboard>
   );
 }
@@ -106,6 +112,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 40,
     paddingTop: 60,
+    flex: 1,
   },
   inputContainer: {
     marginBottom: 20,
