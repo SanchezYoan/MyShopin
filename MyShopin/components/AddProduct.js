@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ButtonComponent from "./ButtonComponent";
 import { StyleSheet, TextInput, View, Modal } from "react-native";
+import Colors from "../constants/Colors";
 
 const AddProduct = ({ handleSubmit, displayModal, cancelNewProduct }) => {
   const [product, setProducts] = useState("");
@@ -83,8 +84,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   },
-  btnBlue: { width: 150, backgroundColor: "seagreen", borderRadius: 6 },
-  btnTomato: { width: 150, backgroundColor: "tomato", borderRadius: 6 },
+  btnBlue: { width: 150, backgroundColor: Colors.success, borderRadius: 6 },
+  btnTomato: { width: 150, backgroundColor: Colors.warning, borderRadius: 6 },
 });
 
 export default AddProduct;

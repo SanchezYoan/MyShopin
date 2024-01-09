@@ -14,6 +14,7 @@ import AddProduct from "./components/AddProduct";
 import DissmissKeyboard from "./components/DissmissKeyboard";
 import ButtonComponent from "./components/ButtonComponent";
 import Header from "./components/Header";
+import Colors from "./constants/Colors";
 
 export default function App() {
   const [listProducts, setListProducts] = useState([]);
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   textInput: {
-    borderColor: "grey",
+    borderColor: Colors.secondary,
     borderWidth: 1,
     padding: 5,
     paddingLeft: 9,
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0, 0.2)",
   },
   modalContent: {
-    backgroundColor: "white",
+    backgroundColor: Colors.white,
     width: "90%",
     height: 300,
     borderRadius: 15,
@@ -154,10 +155,10 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
     borderBottomWidth: 1,
-    borderBottomColor: "lightgray",
+    borderBottomColor: Colors.secondary,
   },
   modalHeaderText: {
-    color: "grey",
+    color: Colors.info,
     fontSize: 17,
   },
   modalBody: {
@@ -171,6 +172,7 @@ const styles = StyleSheet.create({
   modalBodyText: {
     fontSize: 17,
     color: "black",
+    marginTop: 20,
   },
   modalFooter: {
     width: "100%",
@@ -178,7 +180,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 15,
   },
   btnPressableModal: {
-    backgroundColor: "#bdbd7e",
+    backgroundColor: Colors.info,
     justifyContent: "center",
     alignItems: "center",
     borderBottomLeftRadius: 15,
@@ -187,12 +189,12 @@ const styles = StyleSheet.create({
     borderTopColor: "lightgray",
   },
   modalFooterText: {
-    color: "white",
+    color: Colors.white,
     fontSize: 16,
     padding: 5,
   },
   addProductBtn: {
-    backgroundColor: "blue",
+    backgroundColor: Colors.danger,
     padding: 20,
     borderRadius: 30,
     marginBottom: 20,
