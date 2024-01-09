@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ButtonComponent from "./ButtonComponent";
 import { StyleSheet, TextInput, View, Modal } from "react-native";
 import Colors from "../constants/Colors";
+import Input from "./Input";
 
 const AddProduct = ({ handleSubmit, displayModal, cancelNewProduct }) => {
   const [product, setProducts] = useState("");
@@ -29,20 +30,11 @@ const AddProduct = ({ handleSubmit, displayModal, cancelNewProduct }) => {
   return (
     <Modal visible={displayModal} animationType="slide">
       <View style={styles.inputContainer}>
-        <TextInput
-          // multiline
-          // Permet d'écrire sur plusieurs lignes
-          // numberOfLines={4}
+        <Input
           style={styles.textInput}
-          placeholder="Nouveau produit"
-          maxLength={12}
-          onChangeText={(e) => handleProduct(e)}
-          value={product}
-          // Masque l'entrée en "*"
-          // secureTextEntry
-          // -----------------//
-          // désactive le textInput
-          // editable={false}
+          textPlaceholder="Nouveau produit"
+          handleProduct={handleProduct}
+          inputValue={product}
         />
         <View style={styles.btnContainer}>
           <ButtonComponent
@@ -72,12 +64,13 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   textInput: {
-    borderColor: "grey",
     borderWidth: 1,
     marginBottom: 9,
     padding: 5,
-    paddingLeft: 9,
     fontSize: 18,
+    borderRadius: 30,
+    textAlign: "center",
+    height: 50,
     // Prend tout l'espace disponible
   },
   btnContainer: {
