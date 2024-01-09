@@ -6,13 +6,14 @@ import {
   StyleSheet,
   View,
   Pressable,
-  Button,
   Image,
   ImageBackground,
 } from "react-native";
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
 import DissmissKeyboard from "./components/DissmissKeyboard";
+import ButtonComponent from "./components/ButtonComponent";
+import Header from "./components/Header";
 
 export default function App() {
   const [listProducts, setListProducts] = useState([]);
@@ -47,62 +48,70 @@ export default function App() {
     // Permet d'enlever le clavier virtuel
     <DissmissKeyboard>
       <ImageBackground
+        style={styles.bgImage}
         source={{
           uri: "https://cdn.pixabay.com/photo/2015/04/20/22/17/magnolia-732331_960_720.png",
         }}
-        style={styles.container}
       >
-        <Modal
-          visible={showModal}
-          onRequestClose={() => setShowModal(false)}
-          hardwareAccelerated
-          transparent
-        >
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <View style={styles.modalHeader}>
-                <Text style={styles.modalHeaderText}>Oups !</Text>
-              </View>
-              <View style={styles.modalBody}>
-                {/* <Image source={require("./assets/cross_cancel.png")} /> */}
-                <Image
-                  source={{
-                    uri: "https://cdn.pixabay.com/photo/2013/07/12/13/50/road-sign-147409_960_720.png",
-                  }}
-                  style={{ width: 50, height: 50 }}
-                />
-                <Text style={styles.modalBodyText}>
-                  Merci d'indiquer plus d'un caractère
-                </Text>
-              </View>
-              <View style={styles.modalFooter}>
-                <Pressable
-                  style={styles.btnPressableModal}
-                  onPress={() => setShowModal(false)}
-                >
-                  <Text style={styles.modalFooterText}>OK</Text>
-                </Pressable>
+        <Header />
+        <View style={styles.container}>
+          <Modal
+            visible={showModal}
+            onRequestClose={() => setShowModal(false)}
+            hardwareAccelerated
+            transparent
+          >
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <View style={styles.modalHeader}>
+                  <Text style={styles.modalHeaderText}>Oups !</Text>
+                </View>
+                <View style={styles.modalBody}>
+                  <Image
+                    source={{
+                      uri: "https://cdn.pixabay.com/photo/2013/07/12/13/50/road-sign-147409_960_720.png",
+                    }}
+                    style={{ width: 100, height: 100 }}
+                  />
+                  <Text style={styles.modalBodyText}>
+                    Merci d'indiquer plus d'un caractère
+                  </Text>
+                </View>
+                <View style={styles.modalFooter}>
+                  <Pressable
+                    style={styles.btnPressableModal}
+                    onPress={() => setShowModal(false)}
+                  >
+                    <Text style={styles.modalFooterText}>OK</Text>
+                  </Pressable>
+                </View>
               </View>
             </View>
-          </View>
-        </Modal>
-        <Button title="Nouveau produit" onPress={() => setDisplayModal(true)} />
-        <AddProduct
-          handleSubmit={handleSubmit}
-          displayModal={displayModal}
-          cancelNewProduct={cancelNewProduct}
-        />
+          </Modal>
+          <ButtonComponent
+            onPressHandler={() => setDisplayModal(true)}
+            style={styles.addProductBtn}
+          >
+            Nouveau Produit
+          </ButtonComponent>
+          {/* <Button title="Nouveau produit" onPress={() => setDisplayModal(true)} /> */}
+          <AddProduct
+            handleSubmit={handleSubmit}
+            displayModal={displayModal}
+            cancelNewProduct={cancelNewProduct}
+          />
 
-        <FlatList
-          data={listProducts}
-          renderItem={({ item }) => (
-            <Products
-              name={item.name}
-              deleteProduct={deleteProduct}
-              idString={item.key}
-            />
-          )}
-        />
+          <FlatList
+            data={listProducts}
+            renderItem={({ item }) => (
+              <Products
+                name={item.name}
+                deleteProduct={deleteProduct}
+                idString={item.key}
+              />
+            )}
+          />
+        </View>
       </ImageBackground>
     </DissmissKeyboard>
   );
@@ -111,7 +120,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     padding: 40,
-    paddingTop: 60,
     flex: 1,
   },
   inputContainer: {
@@ -182,5 +190,14 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     padding: 5,
+  },
+  addProductBtn: {
+    backgroundColor: "blue",
+    padding: 20,
+    borderRadius: 30,
+    marginBottom: 20,
+  },
+  bgImage: {
+    flex: 1,
   },
 });

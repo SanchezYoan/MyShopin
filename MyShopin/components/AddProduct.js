@@ -9,7 +9,7 @@ const AddProduct = ({ handleSubmit, displayModal, cancelNewProduct }) => {
   // gestion d'etat du button valider
 
   useEffect(() => {
-    if (product.length > 1) {
+    if (product.length > 3) {
       setBtnDisable(false);
     } else {
       setBtnDisable(true);
@@ -45,18 +45,19 @@ const AddProduct = ({ handleSubmit, displayModal, cancelNewProduct }) => {
         />
         <View style={styles.btnContainer}>
           <ButtonComponent
-            btnTitle="Valider"
             onPressHandler={handlePress}
             disabled={btnDisable}
             style={styles.btnBlue}
-          />
+          >
+            Valider
+          </ButtonComponent>
 
           <ButtonComponent
-            btnTitle="Annuler"
             onPressHandler={cancelNewProduct}
-            color="tomato"
             style={styles.btnTomato}
-          />
+          >
+            Annuler
+          </ButtonComponent>
         </View>
       </View>
     </Modal>
@@ -82,8 +83,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   },
-  btnBlue: { width: "150px", backgroundColor: "skyblue", borderRadius: 6 },
-  btnTomato: { width: "150px", backgroundColor: "tomato", borderRadius: 6 },
+  btnBlue: { width: 150, backgroundColor: "seagreen", borderRadius: 6 },
+  btnTomato: { width: 150, backgroundColor: "tomato", borderRadius: 6 },
 });
 
 export default AddProduct;

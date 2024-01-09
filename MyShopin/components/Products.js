@@ -2,16 +2,8 @@ import React from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 
 const Products = ({ name, deleteProduct, idString }) => {
-  // const handleDelete = () => {};
   return (
-    <Pressable
-      onLongPress={() => deleteProduct(idString)}
-      style={({ pressed }) => [
-        {
-          backgroundColor: pressed ? "blue" : "red",
-        },
-      ]}
-    >
+    <Pressable onLongPress={() => deleteProduct(idString)} style={styles.items}>
       <View>
         <Text style={styles.element}>{name}</Text>
       </View>
@@ -21,15 +13,16 @@ const Products = ({ name, deleteProduct, idString }) => {
 
 const styles = StyleSheet.create({
   items: {
-    // marginTop: 10,
+    marginTop: 15,
+    marginBottom: 15,
   },
   element: {
-    backgroundColor: "grey",
-    color: "white",
-    borderWidth: 1,
-    borderColor: "white",
+    backgroundColor: "white",
+    color: "black",
+    borderTopWidth: 5,
+    borderTopColor: "red",
     padding: 10,
-    marginTop: 15,
+    borderRadius: 5,
     fontSize: 18,
   },
 });
