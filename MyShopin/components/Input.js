@@ -2,17 +2,23 @@ import { StyleSheet, TextInput } from "react-native";
 import React from "react";
 import Colors from "../constants/Colors";
 
-const Input = ({ textPlaceholder, handleProduct, inputValue, style }) => {
+const Input = ({
+  textPlaceholder,
+  handleProduct,
+  inputValue,
+  style,
+  maxLength,
+}) => {
   return (
     <TextInput
+      style={{ ...styles.input, ...style }}
+      placeholder={textPlaceholder}
+      onChangeText={handleProduct}
+      value={inputValue}
+      maxLength={maxLength}
       // multiline
       // Permet d'écrire sur plusieurs lignes
       // numberOfLines={4}
-      style={{ ...styles.input, ...style }}
-      placeholder={textPlaceholder}
-      maxLength={12}
-      onChangeText={handleProduct}
-      value={inputValue}
       // Masque l'entrée en "*"
       // secureTextEntry
       // -----------------//

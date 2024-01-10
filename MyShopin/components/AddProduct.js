@@ -19,7 +19,9 @@ const AddProduct = ({ handleSubmit, displayModal, cancelNewProduct }) => {
     // l'événènement se déclenche quand product est modifié
   }, [product]);
   const handleProduct = (prod) => {
-    setProducts(prod);
+    // caractères autorisés
+    const regex = /[^a-z^0-9]/gi;
+    setProducts(prod.replace(regex, ""));
   };
 
   const handlePress = () => {
@@ -35,6 +37,9 @@ const AddProduct = ({ handleSubmit, displayModal, cancelNewProduct }) => {
           textPlaceholder="Nouveau produit"
           handleProduct={handleProduct}
           inputValue={product}
+          maxLength={10}
+          // keyboardType
+          // Détermine quel clavier ouvrir, par exemple numeric
         />
         <View style={styles.btnContainer}>
           <ButtonComponent
