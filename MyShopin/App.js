@@ -15,6 +15,11 @@ import DissmissKeyboard from "./components/DissmissKeyboard";
 import ButtonComponent from "./components/ButtonComponent";
 import Header from "./components/Header";
 import Colors from "./constants/Colors";
+import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
+
+// import * as SplashScreen from "expo-splash-screen";
+
+// SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [listProducts, setListProducts] = useState([]);
@@ -22,6 +27,16 @@ export default function App() {
   const [showModal, setShowModal] = useState(true);
 
   const [displayModal, setDisplayModal] = useState(false);
+
+  const [fontsLoaded, fontError] = useFonts({
+    Inter_900Black,
+    "inter-bold": require("./assets/fonts/Inter-Bold.ttf"),
+    "pacifico-regular": require("./assets/fonts/Pacifico-Regular.ttf"),
+  });
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
 
   const handleSubmit = (product) => {
     setDisplayModal(false);

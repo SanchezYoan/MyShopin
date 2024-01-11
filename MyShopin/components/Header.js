@@ -1,11 +1,12 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import Colors from "../constants/Colors";
+import TitleText from "./TitleText";
 
 const Header = () => {
   return (
     <View style={styles.headerWrapper}>
-      <Text style={styles.logo}>My shopping List</Text>
+      <TitleText style={styles.logo}>My shopping List</TitleText>
     </View>
   );
 };
@@ -24,7 +25,8 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: 30,
     padding: 9,
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontFamily: "pacifico-regular",
   },
 });
 export default Header;
