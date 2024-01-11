@@ -110,7 +110,6 @@ export default function App() {
           >
             Nouveau Produit
           </ButtonComponent>
-          {/* <Button title="Nouveau produit" onPress={() => setDisplayModal(true)} /> */}
           <AddProduct
             handleSubmit={handleSubmit}
             displayModal={displayModal}
@@ -209,10 +208,12 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   addProductBtn: {
-    backgroundColor: Colors.danger,
+    backgroundColor: Colors.success,
     padding: 20,
     borderRadius: 30,
     marginBottom: 20,
+    borderWidth: 1,
+    borderColor: Colors.white,
   },
   bgImage: {
     flex: 1,
