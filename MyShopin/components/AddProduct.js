@@ -3,6 +3,8 @@ import ButtonComponent from "./ButtonComponent";
 import { StyleSheet, TextInput, View, Modal } from "react-native";
 import Colors from "../constants/Colors";
 import Input from "./Input";
+import BodyText from "./BodyText";
+import AppStyles from "../constants/AppStyles";
 
 const AddProduct = ({ handleSubmit, displayModal, cancelNewProduct }) => {
   const [product, setProducts] = useState("");
@@ -32,6 +34,8 @@ const AddProduct = ({ handleSubmit, displayModal, cancelNewProduct }) => {
   return (
     <Modal visible={displayModal} animationType="slide">
       <View style={styles.inputContainer}>
+        <BodyText style={AppStyles.headerTwo}>Choisissez un produit</BodyText>
+
         <Input
           style={styles.textInput}
           textPlaceholder="Nouveau produit"
