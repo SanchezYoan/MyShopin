@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import Colors from "./Colors";
-import { Inter_400Regular } from "@expo-google-fonts/inter";
+// import { Inter_400Regular } from "@expo-google-fonts/inter";
 
 export default StyleSheet.create({
   headerOne: {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Text,
   FlatList,
@@ -40,7 +40,8 @@ export default function App() {
 
   const handleSubmit = (product) => {
     setDisplayModal(false);
-    if (product.length > 3) {
+    if (product.length > 2) {
+      console.log("ok", product);
       const idString = Date.now().toString();
       setListProducts((currentListProducts) => [
         { key: idString, name: product },

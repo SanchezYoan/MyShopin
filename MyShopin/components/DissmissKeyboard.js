@@ -1,4 +1,4 @@
-import { View, Text, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { Pressable, Keyboard, TouchableWithoutFeedback } from "react-native";
 import React from "react";
 
 export default function DissmissKeyboard({ children }) {
